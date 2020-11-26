@@ -19,6 +19,8 @@ namespace MyTransportApp
         public Form1()
         {
             InitializeComponent();
+            zeitinput.Text = DateTime.Now.ToString("HH:mm", CultureInfo.InvariantCulture);
+            AbfahrtsdatumEingabe.Value = Convert.ToDateTime(DateTime.Now.ToString("MMMM dd, yyyy", CultureInfo.InvariantCulture));
         }
 
         private void btn_switch_Click(object sender, EventArgs e)
@@ -68,27 +70,29 @@ namespace MyTransportApp
 
         private void startstationInput_TextChanged(object sender, EventArgs e)
         {
-            /*Stations stations = _transport.GetStations(query: startstationInput.Text);
-            startstationInput.AutoCompleteCustomSource.Clear();
+            Stations stations = _transport.GetStations(query: startstationInput.Text);
+            //startstationInput.AutoCompleteCustomSource.Clear();
             
-            foreach(Station station in stations.StationList)
+            /*foreach(Station station in stations.StationList)
             {
                 if(station.Name != "")
                 {
-                    startstationInput.AutoCompleteCustomSource.Add(station.Name);
+                    //startstationInput.AutoCompleteCustomSource.Add(station.Name);
+                    Console.WriteLine(station.Name);
                 }
             }*/
         }
 
         private void endstationInput_TextChanged(object sender, EventArgs e)
         {
-            /*Stations stations = _transport.GetStations(query: endstationInput.Text);
-            endstationInput.AutoCompleteCustomSource.Clear();
-            foreach (Station station in stations.StationList)
+            Stations stations = _transport.GetStations(query: endstationInput.Text);
+            //endstationInput.AutoCompleteCustomSource.Clear();
+            /*foreach (Station station in stations.StationList)
             {
                 if (station.Name != "")
                 {
-                    endstationInput.AutoCompleteCustomSource.Add(station.Name);
+                    //endstationInput.AutoCompleteCustomSource.Add(station.Name);
+                    Console.WriteLine(station.Name);
                 }
             }*/
         }

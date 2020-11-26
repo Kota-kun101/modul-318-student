@@ -45,13 +45,27 @@ namespace MyTransportApp
             this.Endstation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Reisezeit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ankunft = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dataGridView_Abfahrtstafel = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Verbindungen)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Abfahrtstafel)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(91, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(33, 17);
             this.label1.TabIndex = 2;
@@ -60,7 +74,7 @@ namespace MyTransportApp
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(287, 10);
+            this.label2.Location = new System.Drawing.Point(88, 68);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(27, 17);
             this.label2.TabIndex = 3;
@@ -68,7 +82,7 @@ namespace MyTransportApp
             // 
             // AbfahrtsdatumEingabe
             // 
-            this.AbfahrtsdatumEingabe.Location = new System.Drawing.Point(290, 87);
+            this.AbfahrtsdatumEingabe.Location = new System.Drawing.Point(466, 88);
             this.AbfahrtsdatumEingabe.Name = "AbfahrtsdatumEingabe";
             this.AbfahrtsdatumEingabe.Size = new System.Drawing.Size(255, 22);
             this.AbfahrtsdatumEingabe.TabIndex = 4;
@@ -76,7 +90,7 @@ namespace MyTransportApp
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(287, 67);
+            this.label3.Location = new System.Drawing.Point(463, 68);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 17);
             this.label3.TabIndex = 5;
@@ -85,7 +99,7 @@ namespace MyTransportApp
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(121, 68);
+            this.label6.Location = new System.Drawing.Point(463, 7);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(32, 17);
             this.label6.TabIndex = 10;
@@ -93,7 +107,7 @@ namespace MyTransportApp
             // 
             // btn_Verbindungen
             // 
-            this.btn_Verbindungen.Location = new System.Drawing.Point(399, 134);
+            this.btn_Verbindungen.Location = new System.Drawing.Point(574, 116);
             this.btn_Verbindungen.Name = "btn_Verbindungen";
             this.btn_Verbindungen.Size = new System.Drawing.Size(146, 23);
             this.btn_Verbindungen.TabIndex = 11;
@@ -103,17 +117,17 @@ namespace MyTransportApp
             // 
             // btn_Abfahrtstafel
             // 
-            this.btn_Abfahrtstafel.Location = new System.Drawing.Point(290, 134);
+            this.btn_Abfahrtstafel.Location = new System.Drawing.Point(289, 28);
             this.btn_Abfahrtstafel.Name = "btn_Abfahrtstafel";
             this.btn_Abfahrtstafel.Size = new System.Drawing.Size(101, 23);
             this.btn_Abfahrtstafel.TabIndex = 12;
-            this.btn_Abfahrtstafel.Text = "Abfahrtstafel";
+            this.btn_Abfahrtstafel.Text = "Suchen";
             this.btn_Abfahrtstafel.UseVisualStyleBackColor = true;
             this.btn_Abfahrtstafel.Click += new System.EventHandler(this.btn_Abfahrtstafel_Click);
             // 
             // btn_switch
             // 
-            this.btn_switch.Location = new System.Drawing.Point(186, 30);
+            this.btn_switch.Location = new System.Drawing.Point(124, 56);
             this.btn_switch.Name = "btn_switch";
             this.btn_switch.Size = new System.Drawing.Size(61, 23);
             this.btn_switch.TabIndex = 14;
@@ -129,18 +143,18 @@ namespace MyTransportApp
             this.Endstation,
             this.Reisezeit,
             this.Ankunft});
-            this.dataGridView_Verbindungen.Location = new System.Drawing.Point(15, 175);
+            this.dataGridView_Verbindungen.Location = new System.Drawing.Point(9, 205);
             this.dataGridView_Verbindungen.Name = "dataGridView_Verbindungen";
             this.dataGridView_Verbindungen.RowHeadersWidth = 51;
             this.dataGridView_Verbindungen.RowTemplate.Height = 24;
-            this.dataGridView_Verbindungen.Size = new System.Drawing.Size(724, 381);
+            this.dataGridView_Verbindungen.Size = new System.Drawing.Size(745, 318);
             this.dataGridView_Verbindungen.TabIndex = 15;
             // 
             // startstationInput
             // 
             this.startstationInput.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.startstationInput.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.startstationInput.Location = new System.Drawing.Point(12, 30);
+            this.startstationInput.Location = new System.Drawing.Point(91, 28);
             this.startstationInput.Name = "startstationInput";
             this.startstationInput.Size = new System.Drawing.Size(141, 22);
             this.startstationInput.TabIndex = 17;
@@ -151,7 +165,7 @@ namespace MyTransportApp
             // 
             this.endstationInput.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.endstationInput.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.endstationInput.Location = new System.Drawing.Point(290, 31);
+            this.endstationInput.Location = new System.Drawing.Point(91, 89);
             this.endstationInput.Name = "endstationInput";
             this.endstationInput.Size = new System.Drawing.Size(141, 22);
             this.endstationInput.TabIndex = 18;
@@ -160,7 +174,7 @@ namespace MyTransportApp
             // 
             // zeitinput
             // 
-            this.zeitinput.Location = new System.Drawing.Point(124, 88);
+            this.zeitinput.Location = new System.Drawing.Point(466, 27);
             this.zeitinput.Name = "zeitinput";
             this.zeitinput.Size = new System.Drawing.Size(123, 22);
             this.zeitinput.TabIndex = 19;
@@ -193,28 +207,130 @@ namespace MyTransportApp
             this.Ankunft.Name = "Ankunft";
             this.Ankunft.Width = 125;
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(-1, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(770, 562);
+            this.tabControl1.TabIndex = 20;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.startstationInput);
+            this.tabPage1.Controls.Add(this.dataGridView_Verbindungen);
+            this.tabPage1.Controls.Add(this.zeitinput);
+            this.tabPage1.Controls.Add(this.AbfahrtsdatumEingabe);
+            this.tabPage1.Controls.Add(this.btn_Verbindungen);
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.label6);
+            this.tabPage1.Controls.Add(this.endstationInput);
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Controls.Add(this.btn_switch);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(762, 533);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Verbindungen";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.dataGridView_Abfahrtstafel);
+            this.tabPage2.Controls.Add(this.label4);
+            this.tabPage2.Controls.Add(this.textBox1);
+            this.tabPage2.Controls.Add(this.btn_Abfahrtstafel);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(762, 533);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Abfahrtstafel";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(98, 28);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(185, 22);
+            this.textBox1.TabIndex = 13;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(40, 31);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(52, 17);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Station";
+            // 
+            // dataGridView_Abfahrtstafel
+            // 
+            this.dataGridView_Abfahrtstafel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_Abfahrtstafel.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4});
+            this.dataGridView_Abfahrtstafel.Location = new System.Drawing.Point(6, 73);
+            this.dataGridView_Abfahrtstafel.Name = "dataGridView_Abfahrtstafel";
+            this.dataGridView_Abfahrtstafel.RowHeadersWidth = 51;
+            this.dataGridView_Abfahrtstafel.RowTemplate.Height = 24;
+            this.dataGridView_Abfahrtstafel.Size = new System.Drawing.Size(750, 450);
+            this.dataGridView_Abfahrtstafel.TabIndex = 16;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Abfahrt";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Richtung";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Reisezeit";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Ankunft";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Width = 125;
+            // 
             // Form1
             // 
+            this.AcceptButton = this.btn_Verbindungen;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(751, 568);
-            this.Controls.Add(this.zeitinput);
-            this.Controls.Add(this.endstationInput);
-            this.Controls.Add(this.startstationInput);
-            this.Controls.Add(this.AbfahrtsdatumEingabe);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.dataGridView_Verbindungen);
-            this.Controls.Add(this.btn_switch);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.btn_Abfahrtstafel);
-            this.Controls.Add(this.btn_Verbindungen);
+            this.ClientSize = new System.Drawing.Size(769, 560);
+            this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Verbindungen)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Abfahrtstafel)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -235,6 +351,16 @@ namespace MyTransportApp
         private System.Windows.Forms.DataGridViewTextBoxColumn Endstation;
         private System.Windows.Forms.DataGridViewTextBoxColumn Reisezeit;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ankunft;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DataGridView dataGridView_Abfahrtstafel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
     }
 }
 
