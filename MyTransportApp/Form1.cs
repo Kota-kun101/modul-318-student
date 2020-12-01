@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using SwissTransport;
 using System.Globalization;
 using System.Net.Mail;
+using System.Device.Location;
 
 namespace MyTransportApp
 {
@@ -144,14 +145,16 @@ namespace MyTransportApp
         private void opnMap_Click(object sender, EventArgs e)
         {
             GeoCoordinateWatcher watcher = new GeoCoordinateWatcher();
-
             watcher.TryStart(false, TimeSpan.FromMilliseconds(1000));
-
             GeoCoordinate coord = watcher.Position.Location;
 
+            double x = 0.0;
+            double y = 0.0;
+            
             if (coord.IsUnknown != true)
             {
-                Console.WriteLine("Lat: {0}, Long: {1}", coord.Latitude, coord.Longitude);
+                x = coord.Latitude;
+                y = coord.Longitude;
             }
             else
             {
@@ -162,7 +165,7 @@ namespace MyTransportApp
             double coordinateX = stations.StationList[0].Coordinate.XCoordinate;
             double coordinateY = stations.StationList[0].Coordinate.YCoordinate;
 
-            Form2 form2 = new Form2(coordinateX, coordinateY);
+            Form2 form2 = new Form2(coordinateX, coordinateY, x, y);
             form2.Show();
         }
     }
