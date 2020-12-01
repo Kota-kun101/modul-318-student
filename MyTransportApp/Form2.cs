@@ -20,20 +20,15 @@ namespace MyTransportApp
         double LatInicial = 0.0;
         double LngInicial = 0.0;
 
-        double MyLatInicial = 0.0;
-        double MyLngInicial = 0.0;
-        public Form2(double x, double y, double myX, double myY)
+        public Form2(double x, double y)
         {
             InitializeComponent();
             LatInicial = x;
             LngInicial = y;
-            MyLatInicial = myX;
-            MyLngInicial = myY;
         }
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            Console.WriteLine(MyLngInicial + " " + MyLatInicial);
             gMapControl1.DragButton = MouseButtons.Left;
             gMapControl1.CanDragMap = true;
             gMapControl1.MapProvider = GMapProviders.GoogleMap;
@@ -47,11 +42,6 @@ namespace MyTransportApp
             GMarkerGoogle marker = new GMarkerGoogle(new PointLatLng(LatInicial, LngInicial), GMarkerGoogleType.red);
             markersOverlay.Markers.Add(marker);
             gMapControl1.Overlays.Add(markersOverlay);
-
-            GMapOverlay myMarkersOverlay = new GMapOverlay("marker2");
-            GMarkerGoogle myMarker = new GMarkerGoogle(new PointLatLng(MyLatInicial, MyLngInicial), GMarkerGoogleType.green);
-            myMarkersOverlay.Markers.Add(myMarker);
-            gMapControl1.Overlays.Add(myMarkersOverlay);
         }
     }
 }
