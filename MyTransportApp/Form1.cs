@@ -11,6 +11,7 @@ using SwissTransport;
 using System.Globalization;
 using System.Net.Mail;
 using System.Device.Location;
+using System.Diagnostics;
 
 namespace MyTransportApp
 {
@@ -23,6 +24,27 @@ namespace MyTransportApp
             InitializeComponent();
             zeitinput.Text = DateTime.Now.ToString("HH:mm", CultureInfo.InvariantCulture);
             AbfahrtsdatumEingabe.Value = Convert.ToDateTime(DateTime.Now.ToString("MMMM dd, yyyy", CultureInfo.InvariantCulture));
+            getCloseStations();
+        }
+
+        void getCloseStations()
+        {
+            GeoCoordinateWatcher watcher = new GeoCoordinateWatcher();
+            watcher.TryStart(false, TimeSpan.FromMilliseconds(10000));
+            GeoCoordinate coord = watcher.Position.Location;
+
+            if (coord.IsUnknown != true)
+            {
+                Stations stations = _transport.GetCloseStations(coord.Latitude.ToString(), coord.Longitude.ToString());
+                foreach (Station station in stations.StationList)
+                {
+                    dataGridView_closestations.Rows.Add(station.Name, station.Distance + " m");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Unknown latitude and longitude.");
+            }
         }
 
         private void btn_switch_Click(object sender, EventArgs e)
@@ -61,110 +83,77 @@ namespace MyTransportApp
             }
         }
 
-        private void startStationCombobox_TextChanged(object sender, EventArgs e)
-        {
-            if (startStationCombobox.Text != "")
-            {
-                Stations stations = _transport.GetStations(query: startStationCombobox.Text);
-                //startStationCombobox.Items.Clear();
-
-                foreach (Station station in stations.StationList)
-                {
-                    if (station.Name != "")
-                    {
-                        /*startStationCombobox.Focus();
-                        startStationCombobox.SelectionStart = startStationCombobox.Text.Length;*/
-                        startStationCombobox.Items.Add(station.Name);
-                    }
-                }
-            }
-        }
-
-        private void EndstationCombobox_TextChanged(object sender, EventArgs e)
-        {
-            if (EndstationCombobox.Text != "")
-            {
-                Stations stations = _transport.GetStations(query: EndstationCombobox.Text);
-                //EndstationCombobox.Items.Clear();
-
-                foreach (Station station in stations.StationList)
-                {
-                    if (station.Name != "")
-                    {
-                        EndstationCombobox.Items.Add(station.Name);
-                    }
-                }
-            }
-        }
-
-        private void abfahrtInputCombobox_TextChanged(object sender, EventArgs e)
-        {
-            if (abfahrtInputCombobox.Text != "")
-            {
-                Stations stations = _transport.GetStations(query: abfahrtInputCombobox.Text);
-                //abfahrtInputCombobox.Items.Clear();
-
-                foreach (Station station in stations.StationList)
-                {
-                    if (station.Name != "")
-                    {
-                        abfahrtInputCombobox.Items.Add(station.Name);
-                    }
-                }
-            }
-        }
-
         private void dataGridView_Verbindungen_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            sendMessage();
-        }
-
-        void sendMessage()
-        {
-            string to = "kota.schnider@gmail.com";
-            string from = "ben@contoso.com";
-            MailMessage message = new MailMessage(from, to);
-            message.Subject = "Using the new SMTP client.";
-            message.Body = @"Using this new feature, you can send an email message from an application very easily.";
-            SmtpClient client = new SmtpClient();
-            client.UseDefaultCredentials = true;
-
-            try
-            {
-                client.Send(message);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Exception caught in CreateTestMessage2(): {0}",
-                    ex.ToString());
-            }
+            Console.WriteLine("WTF");
+            Process.Start("mailto:" + "Kota.schnider@gmail.com" + "?subject=" + "leldukek" + "&body="+ "hahahahahah this is the body lel");
         }
 
         private void opnMap_Click(object sender, EventArgs e)
         {
-            GeoCoordinateWatcher watcher = new GeoCoordinateWatcher();
-            watcher.TryStart(false, TimeSpan.FromMilliseconds(1000));
-            GeoCoordinate coord = watcher.Position.Location;
-
-            double x = 0.0;
-            double y = 0.0;
-            
-            if (coord.IsUnknown != true)
-            {
-                x = coord.Latitude;
-                y = coord.Longitude;
-            }
-            else
-            {
-                Console.WriteLine("Unknown latitude and longitude.");
-            }
-
             Stations stations = _transport.GetStations(query: startStationCombobox.Text);
             double coordinateX = stations.StationList[0].Coordinate.XCoordinate;
             double coordinateY = stations.StationList[0].Coordinate.YCoordinate;
 
             Form2 form2 = new Form2(coordinateX, coordinateY);
             form2.Show();
+        }
+
+        private void startStationCombobox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (startStationCombobox.Text != "")
+            {
+                Stations stations = _transport.GetStations(query: startStationCombobox.Text);
+                startStationCombobox.Items.Clear();
+
+                foreach (Station station in stations.StationList)
+                {
+                    if (station.Name != "")
+                    {
+                        startStationCombobox.Focus();
+                        startStationCombobox.SelectionStart = startStationCombobox.Text.Length;
+                        startStationCombobox.Items.Add(station.Name);
+                    }
+                }
+            }
+        }
+
+        private void EndstationCombobox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (EndstationCombobox.Text != "")
+            {
+                Stations stations = _transport.GetStations(query: EndstationCombobox.Text);
+                EndstationCombobox.Items.Clear();
+
+                foreach (Station station in stations.StationList)
+                {
+                    if (station.Name != "")
+                    {
+                        EndstationCombobox.Focus();
+                        EndstationCombobox.SelectionStart = EndstationCombobox.Text.Length;
+                        EndstationCombobox.Items.Add(station.Name);
+                    }
+                }
+            }
+        }
+
+        private void abfahrtInputCombobox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (abfahrtInputCombobox.Text != "")
+            {
+                Stations stations = _transport.GetStations(query: abfahrtInputCombobox.Text);
+                abfahrtInputCombobox.Items.Clear();
+
+                foreach (Station station in stations.StationList)
+                {
+                    if (station.Name != "")
+                    {
+                        abfahrtInputCombobox.Focus();
+                        abfahrtInputCombobox.SelectionStart = abfahrtInputCombobox.Text.Length;
+                        abfahrtInputCombobox.Items.Add(station.Name);
+                    }
+                }
+            }
         }
     }
 }
