@@ -71,6 +71,8 @@ namespace MyTransportApp
                 {
                     if (station.Name != "")
                     {
+                        /*startStationCombobox.Focus();
+                        startStationCombobox.SelectionStart = startStationCombobox.Text.Length;*/
                         startStationCombobox.Items.Add(station.Name);
                     }
                 }
@@ -137,6 +139,31 @@ namespace MyTransportApp
                 Console.WriteLine("Exception caught in CreateTestMessage2(): {0}",
                     ex.ToString());
             }
+        }
+
+        private void opnMap_Click(object sender, EventArgs e)
+        {
+            GeoCoordinateWatcher watcher = new GeoCoordinateWatcher();
+
+            watcher.TryStart(false, TimeSpan.FromMilliseconds(1000));
+
+            GeoCoordinate coord = watcher.Position.Location;
+
+            if (coord.IsUnknown != true)
+            {
+                Console.WriteLine("Lat: {0}, Long: {1}", coord.Latitude, coord.Longitude);
+            }
+            else
+            {
+                Console.WriteLine("Unknown latitude and longitude.");
+            }
+
+            Stations stations = _transport.GetStations(query: startStationCombobox.Text);
+            double coordinateX = stations.StationList[0].Coordinate.XCoordinate;
+            double coordinateY = stations.StationList[0].Coordinate.YCoordinate;
+
+            Form2 form2 = new Form2(coordinateX, coordinateY);
+            form2.Show();
         }
     }
 }

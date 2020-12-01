@@ -60,6 +60,7 @@ namespace MyTransportApp
             this.Endstation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Reisezeit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ankunft = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.opnMap = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Verbindungen)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -203,6 +204,7 @@ namespace MyTransportApp
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.opnMap);
             this.tabPage1.Controls.Add(this.EndstationCombobox);
             this.tabPage1.Controls.Add(this.startStationCombobox);
             this.tabPage1.Controls.Add(this.dataGridView_Verbindungen);
@@ -359,6 +361,16 @@ namespace MyTransportApp
             this.Ankunft.Name = "Ankunft";
             this.Ankunft.Width = 125;
             // 
+            // opnMap
+            // 
+            this.opnMap.Location = new System.Drawing.Point(252, 26);
+            this.opnMap.Name = "opnMap";
+            this.opnMap.Size = new System.Drawing.Size(97, 24);
+            this.opnMap.TabIndex = 22;
+            this.opnMap.Text = "View on Map";
+            this.opnMap.UseVisualStyleBackColor = true;
+            this.opnMap.Click += new System.EventHandler(this.opnMap_Click);
+            // 
             // Form1
             // 
             this.AcceptButton = this.btn_Verbindungen;
@@ -405,6 +417,7 @@ namespace MyTransportApp
         private System.Windows.Forms.DataGridViewTextBoxColumn Endstation;
         private System.Windows.Forms.DataGridViewTextBoxColumn Reisezeit;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ankunft;
+        private System.Windows.Forms.Button opnMap;
     }
 }
 
