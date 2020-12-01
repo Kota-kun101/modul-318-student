@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SwissTransport;
 using System.Globalization;
+using System.Net.Mail;
 
 namespace MyTransportApp
 {
@@ -25,21 +26,30 @@ namespace MyTransportApp
 
         private void btn_switch_Click(object sender, EventArgs e)
         {
-            string startStationName = startstationInput.Text;
-            startstationInput.Text = endstationInput.Text;
-            endstationInput.Text = startStationName;
+            string startStationName = startStationCombobox.Text;
+            startStationCombobox.Text = EndstationCombobox.Text;
+            EndstationCombobox.Text = startStationName;
         }
 
         private void btn_Abfahrtstafel_Click(object sender, EventArgs e)
         {
-
+            Stations stations = _transport.GetStations(query: abfahrtInputCombobox.Text);
+            if (stations.StationList[0].Id != "")
+            {
+                StationBoardRoot stationBoardRoot = _transport.GetStationBoard(stations.StationList[0].Name, stations.StationList[0].Id);
+                foreach(StationBoard stationBoard in stationBoardRoot.Entries)
+                {
+                    dataGridView_Abfahrtstafel.Rows.Add(stationBoard.Number , stationBoard.Stop.Departure, stationBoard.To);
+                }
+            }
         }
 
         private void btn_Verbindungen_Click(object sender, EventArgs e)
         {
             dataGridView_Verbindungen.Rows.Clear();
+            var abfahrtsdatum = DateTime.Parse(AbfahrtsdatumEingabe.Value.ToString());
 
-            Connections connections = _transport.GetConnections(startstationInput.Text, endstationInput.Text);
+            Connections connections = _transport.GetConnections(startStationCombobox.Text, EndstationCombobox.Text, abfahrtsdatum.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture), zeitinput.Text);
             foreach(Connection connection in connections.ConnectionList)
             {
                 var departure = DateTime.Parse(connection.From.Departure);
@@ -50,51 +60,83 @@ namespace MyTransportApp
             }
         }
 
-        private void startstationInput_Leave(object sender, EventArgs e)
+        private void startStationCombobox_TextChanged(object sender, EventArgs e)
         {
-            Stations stations = _transport.GetStations(query: startstationInput.Text);
-            if (stations.StationList.Count != 0)
+            if (startStationCombobox.Text != "")
             {
-                startstationInput.Text = stations.StationList[0].Name;
+                Stations stations = _transport.GetStations(query: startStationCombobox.Text);
+                //startStationCombobox.Items.Clear();
+
+                foreach (Station station in stations.StationList)
+                {
+                    if (station.Name != "")
+                    {
+                        startStationCombobox.Items.Add(station.Name);
+                    }
+                }
             }
         }
 
-        private void endstationInput_Leave(object sender, EventArgs e)
+        private void EndstationCombobox_TextChanged(object sender, EventArgs e)
         {
-            Stations stations = _transport.GetStations(query: endstationInput.Text);
-            if(stations.StationList.Count != 0)
+            if (EndstationCombobox.Text != "")
             {
-                endstationInput.Text = stations.StationList[0].Name;
+                Stations stations = _transport.GetStations(query: EndstationCombobox.Text);
+                //EndstationCombobox.Items.Clear();
+
+                foreach (Station station in stations.StationList)
+                {
+                    if (station.Name != "")
+                    {
+                        EndstationCombobox.Items.Add(station.Name);
+                    }
+                }
             }
         }
 
-        private void startstationInput_TextChanged(object sender, EventArgs e)
+        private void abfahrtInputCombobox_TextChanged(object sender, EventArgs e)
         {
-            Stations stations = _transport.GetStations(query: startstationInput.Text);
-            //startstationInput.AutoCompleteCustomSource.Clear();
-            
-            /*foreach(Station station in stations.StationList)
+            if (abfahrtInputCombobox.Text != "")
             {
-                if(station.Name != "")
+                Stations stations = _transport.GetStations(query: abfahrtInputCombobox.Text);
+                //abfahrtInputCombobox.Items.Clear();
+
+                foreach (Station station in stations.StationList)
                 {
-                    //startstationInput.AutoCompleteCustomSource.Add(station.Name);
-                    Console.WriteLine(station.Name);
+                    if (station.Name != "")
+                    {
+                        abfahrtInputCombobox.Items.Add(station.Name);
+                    }
                 }
-            }*/
+            }
         }
 
-        private void endstationInput_TextChanged(object sender, EventArgs e)
+        private void dataGridView_Verbindungen_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Stations stations = _transport.GetStations(query: endstationInput.Text);
-            //endstationInput.AutoCompleteCustomSource.Clear();
-            /*foreach (Station station in stations.StationList)
+            sendMessage();
+        }
+
+        void sendMessage()
+        {
+            string to = "kota.schnider@gmail.com";
+            string from = "ben@contoso.com";
+            MailMessage message = new MailMessage(from, to);
+            message.Subject = "Using the new SMTP client.";
+            message.Body = @"Using this new feature, you can send an email message from an application very easily.";
+            SmtpClient client = new SmtpClient();
+            // Credentials are necessary if the server requires the client
+            // to authenticate before it will send email on the client's behalf.
+            client.UseDefaultCredentials = true;
+
+            try
             {
-                if (station.Name != "")
-                {
-                    //endstationInput.AutoCompleteCustomSource.Add(station.Name);
-                    Console.WriteLine(station.Name);
-                }
-            }*/
+                client.Send(message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception caught in CreateTestMessage2(): {0}",
+                    ex.ToString());
+            }
         }
     }
 }
