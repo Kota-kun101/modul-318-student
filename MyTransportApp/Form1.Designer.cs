@@ -29,12 +29,12 @@ namespace MyTransportApp
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.AbfahrtsdatumEingabe = new System.Windows.Forms.DateTimePicker();
@@ -56,15 +56,15 @@ namespace MyTransportApp
             this.startStationCombobox = new System.Windows.Forms.ComboBox();
             this.EndstationCombobox = new System.Windows.Forms.ComboBox();
             this.abfahrtInputCombobox = new System.Windows.Forms.ComboBox();
-            this.Abfahrt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Endstation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Reisezeit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ankunft = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.opnMap = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dataGridView_closestations = new System.Windows.Forms.DataGridView();
             this.Station = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Entfernung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Abfahrt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Richtung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Reisezeit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ankunft = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Verbindungen)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -150,43 +150,43 @@ namespace MyTransportApp
             // 
             // dataGridView_Verbindungen
             // 
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_Verbindungen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_Verbindungen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView_Verbindungen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_Verbindungen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Abfahrt,
-            this.Endstation,
+            this.Richtung,
             this.Reisezeit,
             this.Ankunft});
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView_Verbindungen.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView_Verbindungen.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView_Verbindungen.Location = new System.Drawing.Point(9, 205);
             this.dataGridView_Verbindungen.Name = "dataGridView_Verbindungen";
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_Verbindungen.RowHeadersDefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_Verbindungen.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView_Verbindungen.RowHeadersWidth = 51;
             this.dataGridView_Verbindungen.RowTemplate.Height = 24;
             this.dataGridView_Verbindungen.Size = new System.Drawing.Size(745, 318);
             this.dataGridView_Verbindungen.TabIndex = 15;
-            this.dataGridView_Verbindungen.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_Verbindungen_CellContentDoubleClick);
+            this.dataGridView_Verbindungen.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_Verbindungen_CellDoubleClick);
             // 
             // zeitinput
             // 
@@ -247,37 +247,37 @@ namespace MyTransportApp
             // 
             // dataGridView_Abfahrtstafel
             // 
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_Abfahrtstafel.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_Abfahrtstafel.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView_Abfahrtstafel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_Abfahrtstafel.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Number,
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2});
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView_Abfahrtstafel.DefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView_Abfahrtstafel.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView_Abfahrtstafel.Location = new System.Drawing.Point(6, 73);
             this.dataGridView_Abfahrtstafel.Name = "dataGridView_Abfahrtstafel";
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_Abfahrtstafel.RowHeadersDefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_Abfahrtstafel.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView_Abfahrtstafel.RowHeadersWidth = 51;
             this.dataGridView_Abfahrtstafel.RowTemplate.Height = 24;
             this.dataGridView_Abfahrtstafel.Size = new System.Drawing.Size(750, 450);
@@ -340,34 +340,6 @@ namespace MyTransportApp
             this.abfahrtInputCombobox.TabIndex = 17;
             this.abfahrtInputCombobox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.abfahrtInputCombobox_KeyUp);
             // 
-            // Abfahrt
-            // 
-            this.Abfahrt.HeaderText = "Abfahrt";
-            this.Abfahrt.MinimumWidth = 6;
-            this.Abfahrt.Name = "Abfahrt";
-            this.Abfahrt.Width = 125;
-            // 
-            // Endstation
-            // 
-            this.Endstation.HeaderText = "Richtung";
-            this.Endstation.MinimumWidth = 6;
-            this.Endstation.Name = "Endstation";
-            this.Endstation.Width = 125;
-            // 
-            // Reisezeit
-            // 
-            this.Reisezeit.HeaderText = "Reisezeit";
-            this.Reisezeit.MinimumWidth = 6;
-            this.Reisezeit.Name = "Reisezeit";
-            this.Reisezeit.Width = 125;
-            // 
-            // Ankunft
-            // 
-            this.Ankunft.HeaderText = "Ankunft";
-            this.Ankunft.MinimumWidth = 6;
-            this.Ankunft.Name = "Ankunft";
-            this.Ankunft.Width = 125;
-            // 
             // opnMap
             // 
             this.opnMap.Location = new System.Drawing.Point(252, 26);
@@ -418,6 +390,34 @@ namespace MyTransportApp
             this.Entfernung.Name = "Entfernung";
             this.Entfernung.Width = 125;
             // 
+            // Abfahrt
+            // 
+            this.Abfahrt.HeaderText = "Abfahrt";
+            this.Abfahrt.MinimumWidth = 6;
+            this.Abfahrt.Name = "Abfahrt";
+            this.Abfahrt.Width = 125;
+            // 
+            // Richtung
+            // 
+            this.Richtung.HeaderText = "Richtung";
+            this.Richtung.MinimumWidth = 6;
+            this.Richtung.Name = "Richtung";
+            this.Richtung.Width = 125;
+            // 
+            // Reisezeit
+            // 
+            this.Reisezeit.HeaderText = "Reisezeit";
+            this.Reisezeit.MinimumWidth = 6;
+            this.Reisezeit.Name = "Reisezeit";
+            this.Reisezeit.Width = 125;
+            // 
+            // Ankunft
+            // 
+            this.Ankunft.HeaderText = "Ankunft";
+            this.Ankunft.MinimumWidth = 6;
+            this.Ankunft.Name = "Ankunft";
+            this.Ankunft.Width = 125;
+            // 
             // Form1
             // 
             this.AcceptButton = this.btn_Verbindungen;
@@ -462,15 +462,15 @@ namespace MyTransportApp
         private System.Windows.Forms.ComboBox EndstationCombobox;
         private System.Windows.Forms.ComboBox startStationCombobox;
         private System.Windows.Forms.ComboBox abfahrtInputCombobox;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Abfahrt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Endstation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Reisezeit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ankunft;
         private System.Windows.Forms.Button opnMap;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.DataGridView dataGridView_closestations;
         private System.Windows.Forms.DataGridViewTextBoxColumn Station;
         private System.Windows.Forms.DataGridViewTextBoxColumn Entfernung;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Abfahrt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Richtung;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Reisezeit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ankunft;
     }
 }
 

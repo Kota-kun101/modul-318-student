@@ -83,12 +83,6 @@ namespace MyTransportApp
             }
         }
 
-        private void dataGridView_Verbindungen_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            Console.WriteLine("WTF");
-            Process.Start("mailto:" + "Kota.schnider@gmail.com" + "?subject=" + "leldukek" + "&body="+ "hahahahahah this is the body lel");
-        }
-
         private void opnMap_Click(object sender, EventArgs e)
         {
             Stations stations = _transport.GetStations(query: startStationCombobox.Text);
@@ -153,6 +147,22 @@ namespace MyTransportApp
                         abfahrtInputCombobox.Items.Add(station.Name);
                     }
                 }
+            }
+        }
+
+        private void dataGridView_Verbindungen_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(dataGridView_Verbindungen.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            {
+                string abfahrt = dataGridView_Verbindungen.Rows[e.RowIndex].Cells["Abfahrt"].FormattedValue.ToString();
+                string richtung = dataGridView_Verbindungen.Rows[e.RowIndex].Cells["Richtung"].FormattedValue.ToString();
+                string reisezeit = dataGridView_Verbindungen.Rows[e.RowIndex].Cells["Reisezeit"].FormattedValue.ToString();
+                string ankunft = dataGridView_Verbindungen.Rows[e.RowIndex].Cells["Ankunft"].FormattedValue.ToString();
+
+                string body = "Abfahrt: " + abfahrt + " Richtung: " + richtung + " Reisezeit: " + reisezeit + " Ankunft: " + ankunft;
+
+                Form3 mailSchicken = new Form3(body);
+                mailSchicken.ShowDialog();
             }
         }
     }
