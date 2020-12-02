@@ -65,6 +65,7 @@ namespace MyTransportApp
             this.Richtung = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Reisezeit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ankunft = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_Restart = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Verbindungen)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -172,7 +173,7 @@ namespace MyTransportApp
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView_Verbindungen.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView_Verbindungen.Location = new System.Drawing.Point(9, 205);
+            this.dataGridView_Verbindungen.Location = new System.Drawing.Point(22, 145);
             this.dataGridView_Verbindungen.Name = "dataGridView_Verbindungen";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -184,7 +185,7 @@ namespace MyTransportApp
             this.dataGridView_Verbindungen.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView_Verbindungen.RowHeadersWidth = 51;
             this.dataGridView_Verbindungen.RowTemplate.Height = 24;
-            this.dataGridView_Verbindungen.Size = new System.Drawing.Size(745, 318);
+            this.dataGridView_Verbindungen.Size = new System.Drawing.Size(745, 365);
             this.dataGridView_Verbindungen.TabIndex = 15;
             this.dataGridView_Verbindungen.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_Verbindungen_CellDoubleClick);
             // 
@@ -206,7 +207,7 @@ namespace MyTransportApp
             this.tabControl1.Location = new System.Drawing.Point(-1, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(770, 562);
+            this.tabControl1.Size = new System.Drawing.Size(805, 549);
             this.tabControl1.TabIndex = 20;
             // 
             // tabPage1
@@ -226,7 +227,7 @@ namespace MyTransportApp
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(762, 533);
+            this.tabPage1.Size = new System.Drawing.Size(797, 520);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Verbindungen";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -240,7 +241,7 @@ namespace MyTransportApp
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(762, 533);
+            this.tabPage2.Size = new System.Drawing.Size(797, 520);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Abfahrtstafel";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -352,10 +353,11 @@ namespace MyTransportApp
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.btn_Restart);
             this.tabPage3.Controls.Add(this.dataGridView_closestations);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(762, 533);
+            this.tabPage3.Size = new System.Drawing.Size(797, 520);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Stationen in der Nähe";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -369,11 +371,11 @@ namespace MyTransportApp
             this.dataGridView_closestations.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Station,
             this.Entfernung});
-            this.dataGridView_closestations.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView_closestations.Location = new System.Drawing.Point(0, 32);
             this.dataGridView_closestations.Name = "dataGridView_closestations";
             this.dataGridView_closestations.RowHeadersWidth = 51;
             this.dataGridView_closestations.RowTemplate.Height = 24;
-            this.dataGridView_closestations.Size = new System.Drawing.Size(762, 533);
+            this.dataGridView_closestations.Size = new System.Drawing.Size(798, 488);
             this.dataGridView_closestations.TabIndex = 0;
             // 
             // Station
@@ -418,15 +420,25 @@ namespace MyTransportApp
             this.Ankunft.Name = "Ankunft";
             this.Ankunft.Width = 125;
             // 
+            // btn_Restart
+            // 
+            this.btn_Restart.Location = new System.Drawing.Point(10, 3);
+            this.btn_Restart.Name = "btn_Restart";
+            this.btn_Restart.Size = new System.Drawing.Size(114, 23);
+            this.btn_Restart.TabIndex = 1;
+            this.btn_Restart.Text = "Neu laden";
+            this.btn_Restart.UseVisualStyleBackColor = true;
+            this.btn_Restart.Click += new System.EventHandler(this.btn_Restart_Click);
+            // 
             // Form1
             // 
             this.AcceptButton = this.btn_Verbindungen;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(769, 560);
+            this.ClientSize = new System.Drawing.Size(804, 547);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "MyTransportApp";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Verbindungen)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -471,6 +483,7 @@ namespace MyTransportApp
         private System.Windows.Forms.DataGridViewTextBoxColumn Richtung;
         private System.Windows.Forms.DataGridViewTextBoxColumn Reisezeit;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ankunft;
+        private System.Windows.Forms.Button btn_Restart;
     }
 }
 

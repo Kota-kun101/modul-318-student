@@ -24,13 +24,16 @@ namespace MyTransportApp
             InitializeComponent();
             zeitinput.Text = DateTime.Now.ToString("HH:mm", CultureInfo.InvariantCulture);
             AbfahrtsdatumEingabe.Value = Convert.ToDateTime(DateTime.Now.ToString("MMMM dd, yyyy", CultureInfo.InvariantCulture));
+            //watcher.StatusChanged += new EventHandler<GeoPositionStatusChangedEventArgs>(watcher_StatusChanged);
             getCloseStations();
         }
 
         void getCloseStations()
         {
             GeoCoordinateWatcher watcher = new GeoCoordinateWatcher();
-            watcher.TryStart(false, TimeSpan.FromMilliseconds(10000));
+            //string x = watcher.Position.Location.Latitude.ToString();
+            //string y = watcher.Position.Location.Longitude.ToString();
+            watcher.TryStart(false, TimeSpan.FromMilliseconds(1000));
             GeoCoordinate coord = watcher.Position.Location;
 
             if (coord.IsUnknown != true)
@@ -161,9 +164,17 @@ namespace MyTransportApp
 
                 string body = "Abfahrt: " + abfahrt + " Richtung: " + richtung + " Reisezeit: " + reisezeit + " Ankunft: " + ankunft;
 
-                Form3 mailSchicken = new Form3(body);
-                mailSchicken.ShowDialog();
+                Process.Start(
+                    "mailto:" + "" +
+                    "?subject=" + "Verbindung Teilen" +
+                    "&body=" + body
+                    );
             }
+        }
+
+        private void btn_Restart_Click(object sender, EventArgs e)
+        {
+            getCloseStations();
         }
     }
 }
