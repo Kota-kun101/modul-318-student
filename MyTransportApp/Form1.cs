@@ -19,23 +19,11 @@ namespace MyTransportApp
     {
         ITransport _transport = new Transport();
 
-        public Form1()
-        {
-            InitializeComponent();
-            zeitinput.Text = DateTime.Now.ToString("HH:mm", CultureInfo.InvariantCulture);
-            AbfahrtsdatumEingabe.Value = Convert.ToDateTime(DateTime.Now.ToString("MMMM dd, yyyy", CultureInfo.InvariantCulture));
-            //watcher.StatusChanged += new EventHandler<GeoPositionStatusChangedEventArgs>(watcher_StatusChanged);
-            getCloseStations();
-        }
+        GeoCoordinateWatcher watcher = new GeoCoordinateWatcher();
 
-        void getCloseStations()
+        void watcher_StatusChanged(object sender, GeoPositionStatusChangedEventArgs e)
         {
-            GeoCoordinateWatcher watcher = new GeoCoordinateWatcher();
-            //string x = watcher.Position.Location.Latitude.ToString();
-            //string y = watcher.Position.Location.Longitude.ToString();
-            watcher.TryStart(false, TimeSpan.FromMilliseconds(1000));
             GeoCoordinate coord = watcher.Position.Location;
-
             if (coord.IsUnknown != true)
             {
                 Stations stations = _transport.GetCloseStations(coord.Latitude.ToString(), coord.Longitude.ToString());
@@ -47,7 +35,18 @@ namespace MyTransportApp
             else
             {
                 Console.WriteLine("Unknown latitude and longitude.");
+                System.Threading.Thread.Sleep(1000);
             }
+        }
+
+        public Form1()
+        {
+            InitializeComponent();
+            zeitinput.Text = DateTime.Now.ToString("HH:mm", CultureInfo.InvariantCulture);
+            AbfahrtsdatumEingabe.Value = Convert.ToDateTime(DateTime.Now.ToString("MMMM dd, yyyy", CultureInfo.InvariantCulture));
+            watcher.Start();
+            watcher.TryStart(false, TimeSpan.FromMilliseconds(100000));
+            watcher.StatusChanged += new EventHandler<GeoPositionStatusChangedEventArgs>(watcher_StatusChanged);
         }
 
         private void btn_switch_Click(object sender, EventArgs e)
@@ -174,7 +173,7 @@ namespace MyTransportApp
 
         private void btn_Restart_Click(object sender, EventArgs e)
         {
-            getCloseStations();
+            watcher.StatusChanged += new EventHandler<GeoPositionStatusChangedEventArgs>(watcher_StatusChanged);
         }
     }
 }
