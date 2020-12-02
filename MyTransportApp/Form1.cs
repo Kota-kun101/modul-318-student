@@ -88,11 +88,15 @@ namespace MyTransportApp
         private void opnMap_Click(object sender, EventArgs e)
         {
             Stations stations = _transport.GetStations(query: startStationCombobox.Text);
-            double coordinateX = stations.StationList[0].Coordinate.XCoordinate;
-            double coordinateY = stations.StationList[0].Coordinate.YCoordinate;
+            if (stations.StationList.Count != 0)
+            {
+                double coordinateX = stations.StationList[0].Coordinate.XCoordinate;
+                double coordinateY = stations.StationList[0].Coordinate.YCoordinate;
 
-            Form2 form2 = new Form2(coordinateX, coordinateY);
-            form2.Show();
+                Form2 form2 = new Form2(coordinateX, coordinateY);
+                form2.Show();
+            }
+
         }
 
         private void startStationCombobox_KeyUp(object sender, KeyEventArgs e)
